@@ -1,0 +1,14 @@
+<%= form_with model: @category, url: categories_path do |form| %>
+    <div class="mb-5 w-25">
+        <%= form.label :name, "Category", :class => "form-label" %>
+        <%= form.text_field :name, placeholder: "Category Name", required: true, :class => "form-control" %>
+    </div>
+    <div class="mb-5 w-25">
+        <%= form.label :icon, "icon", :class => "form-label" %>
+        <%= form.text_field :icon, placeholder: "Icon", required: true, :class => "form-control" %>
+    </div>
+
+    <div>
+        <%= form.submit "Save", class: "btn btn-primary", disable_with: "Please wait..." %>
+    </div>
+<% end %>
