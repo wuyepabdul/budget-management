@@ -1,2 +1,29 @@
-<h1>UserTransactions#index</h1>
-<p>Find me in app/views/user_transactions/index.html.erb</p>
+<div class='container'>
+    <%= link_to '< Back', categories_path, class: 'btn btn-primary mb-5' %>
+
+    <% if @transactions.length > 0 %>
+        <h3>Total Amount : $<%= @total_transaction_amount %> </h3>
+
+        <% @transactions.each do |transaction| %>
+            <div class="card mb-3" style="max-width: 540px;">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                    <img src="../../assets/images/logo.jpeg" class="img-fluid rounded-start" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                    <div class="card-body">
+                    
+                        <h5 class="card-title"> <%= transaction.name %> </h5>
+                        
+                        <p class="card-text"> $<%= transaction.amount %> </p>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        <% end %>
+    <% else %>
+        <h2> Your transaction list is empty </h2>
+    <% end %>
+
+    <%= link_to 'Add a new transaction', new_category_user_transaction_path, class: 'btn btn-primary' %>
+</div>

@@ -5,5 +5,4 @@ class UserTransaction < ApplicationRecord
 
     validates :name, presence: true
     validates :amount, presence: true
-    validates :category_lists, presence: true
 end

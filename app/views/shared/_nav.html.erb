@@ -11,6 +11,8 @@
             <%= link_to 'Signin', new_user_session_path, class: 'nav-link' %>
         <% end %>
         <% if user_signed_in? %>
+            <%= link_to 'Categories', categories_path, class: 'nav-link' %>
+
             <%= button_to 'log out', destroy_user_session_path, method: :delete, class: "btn btn-primary mx-3" %>
         <% end %>
       </div>

@@ -35,7 +35,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_14_211905) do
   create_table "user_transactions", force: :cascade do |t|
     t.string "name", default: "", null: false
     t.integer "amount", default: 0, null: false
-    t.string "category_lists", default: "", null: false
+    t.string "category_lists", default: [], null: false, array: true
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

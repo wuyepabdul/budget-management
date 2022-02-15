@@ -7,9 +7,15 @@
         <%= form.label :amount, "Amount", :class => "form-label" %>
         <%= form.number_field :amount, placeholder: "Amount", required: true, :class => "form-control" %>
     </div>
-    <div class="mb-5 w-25">
-        <%= form.label :category_lists, "Categories", :class => "form-label" %>
-        <%= form.text_field :category_lists, placeholder: "Categories", required: true, :class => "form-control" %>
+
+    <div class="field">
+        <%= form.label "Select Category/Categories" %><br />
+        <%= form.collection_check_boxes :category_lists, Category.all, :id, :name do |b| %>
+            <div class="collection-check-box">
+            <%= b.check_box %>
+            <%= b.label %>
+            </div>
+        <% end %>
     </div>
 
     <div>

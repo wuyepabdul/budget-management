@@ -1,5 +1,6 @@
 class CategoriesController < ApplicationController
   def index
+    @categories = current_user.categories.all
   end
 
   def show
@@ -15,12 +16,9 @@ class CategoriesController < ApplicationController
     return unless can? :create, category
 
     if category.save
-      flash.now[:notice] = 'Category Created Successfully'
       redirect_to categories_path, notice: "Category Created Successfully"
-      # redirect_to root_path, notice: "Category Created Successfully"
     else
-      # redirect_to categories_path, alert: "Error, Could Not Create Category"
-    flash.now[:alert] = category.errors
+      redirect_to new_category_path, alert: "Error, Could Not Create Category"
     end
   end
 

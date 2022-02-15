@@ -1,4 +1,26 @@
-<h1>Categories#index</h1>
-<%# For each category, the user can see their name, icon and the total amount of all the transactions that belongs to that category.
-When the user clicks (or taps) on a category item, the application navigates to the transactions page for that category.
-There is a button "add a new category" at the bottom that brings the user to the page to create a new category. %>
+<div class='container'>
+    <% if @categories.length > 0 %>
+            <h1>Your list of Categories </h1>
+        <% @categories.each do |category| %>
+        <div class="card mb-3" style="max-width: 540px;">
+            <div class="row g-0">
+                <div class="col-md-4">
+                <img src="../../assets/images/logo.jpeg" class="img-fluid rounded-start" alt="...">
+                </div>
+                <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title"> $50 </h5>
+                    
+                    <p class="card-text"> <%= category.name %> </p>
+                    <p> <%= link_to 'View', category_user_transactions_path(category.id) %> </p>
+                </div>
+                </div>
+            </div>
+        </div>
+    <% end %>
+    <% else %>
+        <h1> You have no categories </h1>
+    <% end %>
+
+    <%= link_to 'Add a new category', new_category_path, class: 'btn btn-primary' %>
+</div>
