@@ -1,7 +1,25 @@
 class UserTransactionsController < ApplicationController
+  load_and_authorize_resource
+  before_action :authenticate_user!
+
+  def sum(array)
+    array.reduce(0) { |sum, num| sum + num.amount }
+  end
+
   def index
+    current_category = current_user.categories.find(params[:category_id])
+    @category_transactions = []
     @transactions = current_user.user_transactions.all.order('created_at Desc')
-    @total_transaction_amount = @transactions.sum('amount')
+      @transactions.each do |transaction|
+        transaction.category_lists.each do |cat|
+          if cat == params[:category_id]
+            @category_transactions << transaction
+          end
+        end
+      end
+
+      @total_transaction_amount = sum(@category_transactions.uniq)
+      total = sum(@category_transactions.uniq)
   end
 
   def show
@@ -14,8 +32,7 @@ class UserTransactionsController < ApplicationController
   def create
     category_ids = user_transaction_params[:category_lists]
 
-    category = current_user.categories.find(params[:category_id])
-    user_transaction = current_user.user_transactions.new(user_transaction_params)
+    user_transaction = current_user.categories.user_transactions.new(user_transaction_params)
 
     return unless can? :create, user_transaction
     user_transaction.category_lists += category_ids[1..-1]

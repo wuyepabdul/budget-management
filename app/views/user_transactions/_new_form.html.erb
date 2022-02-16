@@ -10,7 +10,7 @@
 
     <div class="field">
         <%= form.label "Select Category/Categories" %><br />
-        <%= form.collection_check_boxes :category_lists, Category.all, :id, :name do |b| %>
+        <%= form.collection_check_boxes :category_lists, current_user.categories.all, :id, :name do |b| %>
             <div class="collection-check-box">
             <%= b.check_box %>
             <%= b.label %>
