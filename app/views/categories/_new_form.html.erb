@@ -4,8 +4,7 @@
         <%= form.text_field :name, placeholder: "Category Name", required: true, :class => "form-control" %>
     </div>
     <div class="mb-5 w-25">
-        <%= form.label :icon, "icon", :class => "form-label" %>
-        <%= form.text_field :icon, placeholder: "Icon", required: true, :class => "form-control" %>
+        <%= form.file_field :icon, :class => "form-control" %>
     </div>
 
     <div>

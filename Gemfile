@@ -88,3 +88,5 @@ end
 gem 'rubocop', '>= 1.0', '< 2.0'
 
 gem 'rails-controller-testing'
+
+gem 'image_processing', '~> 1.2'

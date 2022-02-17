@@ -1,18 +1,27 @@
 <div class='container'>
     <% if @categories.length > 0 %>
             <h1>Your list of Categories </h1>
-        <% @categories.each do |category| %>
+        <% @categories.with_attached_icon.each do |category| %>
         <div class="card mb-3" style="max-width: 540px;">
             <div class="row g-0">
                 <div class="col-md-4">
-                <img src="../../assets/images/logo.jpeg" class="img-fluid rounded-start" alt="...">
+                <% if category.icon.attached? %>
+                    <%= image_tag category.icon, class: 'img-thumbnail'  %>
+                <% end %>
                 </div>
                 <div class="col-md-8">
                 <div class="card-body">
-                    <h5 class="card-title"> $50 </h5>
-                    
-                    <p class="card-text"> <%= category.name %> </p>
-                    <p> <%= link_to 'View', category_user_transactions_path(category.id) %> </p>
+                 
+                    <div class="d-flex mt-3 justify-content-between">
+                      
+                        <p class="card-text"> <%= category.name %> </p>
+                        
+
+                         <p class='text-end'> <%= link_to 'View', category_user_transactions_path(category.id) %> </p>
+                    </div>
+                    <i> <%= current_user.name %> </i>
+                    <%# <p> <%= category.user_transactions.length %> </p> %>
+
                 </div>
                 </div>
             </div>

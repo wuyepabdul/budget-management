@@ -19,7 +19,6 @@ class UserTransactionsController < ApplicationController
       end
 
       @total_transaction_amount = sum(@category_transactions.uniq)
-      total = sum(@category_transactions.uniq)
   end
 
   def show
@@ -30,13 +29,15 @@ class UserTransactionsController < ApplicationController
   end
 
   def create
+    current_category = current_user.categories.find(params[:category_id])
     category_ids = user_transaction_params[:category_lists]
 
-    user_transaction = current_user.categories.user_transactions.new(user_transaction_params)
+    user_transaction = current_user.user_transactions.new(user_transaction_params)
 
     return unless can? :create, user_transaction
     user_transaction.category_lists += category_ids[1..-1]
     if user_transaction.save
+      # current_category.user_transactions.
       redirect_to category_user_transactions_path(params[:category_id]), notice: "Transaction Created Successfully"
     else
       redirect_to new_category_user_transaction_path(params[:category.id]), alert: "Error creating transaction"

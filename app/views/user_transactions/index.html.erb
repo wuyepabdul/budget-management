@@ -7,15 +7,12 @@
         <% @category_transactions.uniq.each do |transaction| %>
             <div class="card mb-3" style="max-width: 540px;">
                 <div class="row g-0">
-                    <div class="col-md-4">
-                    <img src="../../assets/images/logo.jpeg" class="img-fluid rounded-start" alt="...">
-                    </div>
                     <div class="col-md-8">
-                    <div class="card-body">
+                    <div class="card-body d-flex justify-content-between">
                     
-                        <h5 class="card-title"> <%= transaction.name %> </h5>
+                        <p class="card-title"> <%= transaction.name %> </p>
                         
-                        <p class="card-text"> $<%= transaction.amount %> </p>
+                        <h5 class="card-text"> $<%= transaction.amount %> </>
                     </div>
                     </div>
                 </div>

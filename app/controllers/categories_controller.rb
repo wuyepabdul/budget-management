@@ -1,6 +1,23 @@
 class CategoriesController < ApplicationController
   def index
     @categories = current_user.categories.all
+    @transactions = current_user.user_transactions.all.order('created_at Desc')
+    # category_transactions = []
+    # user_cat_transactions = []
+
+    # @categories.each do |category|
+    #   @transactions.each do |tran|
+    #     tran.category_lists.each do |cat_id|
+    #         if cat_id == category.id.to_s 
+    #             category_transactions << tran
+    #             # category.user_transactions.push(tran)
+    #         end 
+    #     end
+    #     category.user_transactions += category_transactions
+    #   end 
+    # end  
+
+      # @total_transaction_amount = sum(@category_transactions.uniq)
   end
 
   def show
