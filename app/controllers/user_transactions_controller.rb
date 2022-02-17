@@ -29,15 +29,44 @@ class UserTransactionsController < ApplicationController
   end
 
   def create
+    count = 0
+    categories = current_user.categories.all
     current_category = current_user.categories.find(params[:category_id])
-    category_ids = user_transaction_params[:category_lists]
+    category_ids = user_transaction_params[:category_lists][1..-1]
 
-    user_transaction = current_user.user_transactions.new(user_transaction_params)
+    user_transaction = current_user.user_transactions.new(name: user_transaction_params[:name], amount:user_transaction_params[:amount], category_lists:category_ids)
+
+    puts '====================================='
+      puts 'BEFORE CREATION'
+      puts  "current category #{current_category.user_transactions.length}"
+      puts  "category list length #{user_transaction.category_lists.length}"
+      puts  "category list #{user_transaction.category_lists}"
+      puts '====================================='
 
     return unless can? :create, user_transaction
-    user_transaction.category_lists += category_ids[1..-1]
+    # user_transaction.category_lists += category_ids[1..-1]
     if user_transaction.save
-      # current_category.user_transactions.
+      puts '====================================='
+      puts 'AFTER CREATION'
+      puts  "current category #{current_category.user_transactions.length}"
+      puts  "category list length #{user_transaction.category_lists.length}"
+      puts  "category list #{user_transaction.category_lists}"
+      puts   '====================================='
+      categories.each do |category|
+        user_transaction.category_lists.each do |cat_id|
+          if category.id.to_s == cat_id
+            category.user_transactions << user_transaction
+            # category.save
+          end
+        end
+      end
+      puts '====================================='
+      puts 'QUERY DONE'
+      puts  "current category #{current_category.user_transactions.length}"
+      puts  "category list length #{user_transaction.category_lists.length}"
+      puts  "category list #{user_transaction.category_lists}"
+      puts   '====================================='
+
       redirect_to category_user_transactions_path(params[:category_id]), notice: "Transaction Created Successfully"
     else
       redirect_to new_category_user_transaction_path(params[:category.id]), alert: "Error creating transaction"
