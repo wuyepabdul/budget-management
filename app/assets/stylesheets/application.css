@@ -32,6 +32,10 @@
   font-size: 25px;
 }
 
+.app-name {
+  color: aqua;
+}
+
 .center-contents {
   display: flex;
   flex-direction: column;
