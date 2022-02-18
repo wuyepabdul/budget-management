@@ -1,9 +1,9 @@
 <%= form_with url: category_user_transactions_path(@category.id), method: :post, local: true, scope: :add_transaction do |form| %>
-    <div class="mb-5 w-25">
+    <div class="mb-5">
         <%= form.label :name, "Transaction", :class => "form-label" %>
         <%= form.text_field :name, placeholder: "Transaction Name", required: true, :class => "form-control" %>
     </div>
-    <div class="mb-5 w-25">
+    <div class="mb-5">
         <%= form.label :amount, "Amount", :class => "form-label" %>
         <%= form.number_field :amount, placeholder: "Amount", required: true, :class => "form-control" %>
     </div>

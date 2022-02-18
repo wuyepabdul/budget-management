@@ -1,8 +1,9 @@
 <div class='container'>
-    <%= link_to '< Back', categories_path, class: 'btn btn-primary mb-5' %>
+     <%= link_to '< Back', categories_path, class: 'btn btn-primary mb-5' %>
 
-    <% if @category_transactions.uniq.length > 0 %>
-        <h3>Total Amount : $<%= @total_transaction_amount %> </h3>
+    <div class='transactions-container'>
+            <% if @category_transactions.uniq.length > 0 %>
+        <h3 class='mb-4'>Total Amount : $<%= @total_transaction_amount %> </h3>
 
         <% @category_transactions.uniq.each do |transaction| %>
             <div class="card mb-3" style="max-width: 540px;">
@@ -22,5 +23,7 @@
         <h2> Your transaction list is empty </h2>
     <% end %>
 
-    <%= link_to 'Add a new transaction', new_category_user_transaction_path, class: 'btn btn-primary' %>
+    <%= link_to 'Add a new transaction', new_category_user_transaction_path, class: 'btn btn-primary my-3' %>
+    </div>
+  
 </div>

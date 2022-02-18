@@ -1,9 +1,9 @@
 <%= form_with model: @category, url: categories_path do |form| %>
-    <div class="mb-5 w-25">
+    <div class="mb-5 ">
         <%= form.label :name, "Category", :class => "form-label" %>
         <%= form.text_field :name, placeholder: "Category Name", required: true, :class => "form-control" %>
     </div>
-    <div class="mb-5 w-25">
+    <div class="mb-5 ">
         <%= form.file_field :icon, :class => "form-control" %>
     </div>
 
