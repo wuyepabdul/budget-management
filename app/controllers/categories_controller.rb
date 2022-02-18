@@ -4,8 +4,7 @@ class CategoriesController < ApplicationController
     @transactions = current_user.user_transactions.all.order('created_at Desc')
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @category = Category.new
@@ -17,9 +16,9 @@ class CategoriesController < ApplicationController
     return unless can? :create, category
 
     if category.save
-      redirect_to categories_path, notice: "Category Created Successfully"
+      redirect_to categories_path, notice: 'Category Created Successfully'
     else
-      redirect_to new_category_path, alert: "Error, Could Not Create Category"
+      redirect_to new_category_path, alert: 'Error, Could Not Create Category'
     end
   end
 

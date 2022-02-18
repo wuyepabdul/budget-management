@@ -14,9 +14,9 @@
  *= require_self
  */
 
- .nav-link.disabled  {
-   color: #000 !important;
- }
+.nav-link.disabled {
+  color: #000 !important;
+}
 
 .hero {
   background-image: url(background-img.jpg);
@@ -30,11 +30,6 @@
 
 .hero p {
   font-size: 25px;
-}
-
-.intro {
-  /* color: #fcf8f8; */
-  /* font-size: 60px; */
 }
 
 .center-contents {

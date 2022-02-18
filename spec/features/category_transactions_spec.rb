@@ -6,9 +6,13 @@ RSpec.feature 'Category index', type: :feature do
 
     @user = User.create!(name: 'abdul', email: 'abdul@mail.com', password: '123456', confirmed_at: Time.now)
 
-    @category = Category.create!(name: 'Shop Rite', icon: Rack::Test::UploadedFile.new('spec/support/test_image.jpeg', 'image/jpg'), user_id: @user.id)
+    file = Rack::Test::UploadedFile.new('spec/support/test_image.jpeg', 'image/jpg')
 
-    @user_transaction = UserTransaction.create(name:'Shawarma', amount:20, category_lists: ['',@category.id], user_id: @user.id)
+    @category = Category.create!(name: 'Shop Rite',
+                                 icon: file, user_id: @user.id)
+
+    @user_transaction = UserTransaction.create(name: 'Shawarma', amount: 20, category_lists: ['', @category.id],
+                                               user_id: @user.id)
 
     fill_in 'Email', with: @user.email
     fill_in 'Password', with: @user.password
@@ -22,7 +26,7 @@ RSpec.feature 'Category index', type: :feature do
   end
 
   scenario 'Display User Category Transaction page' do
-    expect(page).to have_content("$#{@user_transaction.amount.to_s}")
+    expect(page).to have_content("$#{@user_transaction.amount}")
   end
 
   scenario 'display Add category button on page' do

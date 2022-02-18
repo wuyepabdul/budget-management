@@ -3,10 +3,12 @@ require 'rails_helper'
 RSpec.feature 'Category index', type: :feature do
   background do
     visit new_user_session_path
+    @file_upload = Rack::Test::UploadedFile.new('spec/support/test_image.jpeg', 'image/jpg')
 
     @user = User.create!(name: 'abdul', email: 'abdul@mail.com', password: '123456', confirmed_at: Time.now)
 
-    @category = Category.create!(name: 'Shop Rite', icon: Rack::Test::UploadedFile.new('spec/support/test_image.jpeg', 'image/jpg'), user_id: @user.id)
+    @category = Category.create!(name: 'Shop Rite',
+                                 icon: @file_upload, user_id: @user.id)
 
     fill_in 'Email', with: @user.email
     fill_in 'Password', with: @user.password

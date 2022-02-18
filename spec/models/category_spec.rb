@@ -5,7 +5,8 @@ RSpec.describe Category, type: :model do
     subject do
       @user = User.new(name: 'Abdul', email: 'abdul@mail.com', password: '123456', confirmed_at: Time.now)
 
-      @category = @user.categories.new(user_id: @user.id, name: 'Shop Rite', icon: Rack::Test::UploadedFile.new('spec/support/test_image.jpeg', 'image/jpg'))
+      @category = @user.categories.new(user_id: @user.id, name: 'Shop Rite',
+                                       icon: Rack::Test::UploadedFile.new('spec/support/test_image.jpeg', 'image/jpg'))
     end
     before { subject.save }
 
