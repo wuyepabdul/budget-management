@@ -1,0 +1,25 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <% if user_signed_in? %>
+    <%= link_to "$Ease-Manager", categories_path, class: 'navbar-brand' %>
+    <% else %>
+    <%= link_to "$Ease-Manager", root_path, class: 'navbar-brand' %>
+    <%end%>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <% if !user_signed_in? %>
+            <%= link_to 'Signup', new_user_registration_path, class: 'nav-link' %>
+            <%= link_to 'Signin', new_user_session_path, class: 'nav-link' %>
+        <% end %>
+
+        <% if user_signed_in? %>
+            <%= link_to current_user.name, '#', class: 'nav-link disabled' %>
+            <%= button_to 'log out', destroy_user_session_path, method: :delete, class: "btn btn-primary mr-3" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</nav>

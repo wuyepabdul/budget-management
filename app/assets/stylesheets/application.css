@@ -13,3 +13,41 @@
  *= require_tree .
  *= require_self
  */
+
+.nav-link.disabled {
+  color: #000 !important;
+}
+
+.hero {
+  background-image: url(background-img.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 92vh;
+  width: 100%;
+  margin-top: 0;
+  color: #fcf8f8;
+}
+
+.hero p {
+  font-size: 25px;
+}
+
+.app-name {
+  color: aqua;
+}
+
+.center-contents {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-container {
+  width: 50%;
+  margin: 0 auto;
+}
+
+.transactions-container {
+  width: 540px;
+  margin: 0 auto;
+}
