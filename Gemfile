@@ -51,6 +51,8 @@ gem 'cancancan'
 # Bullet
 gem 'bullet', group: 'development'
 
+gem 'dotenv-rails'
+
 # Letter opener
 gem 'letter_opener', group: :development
 

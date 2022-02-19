@@ -1,24 +1,61 @@
-# README
+# Budget Management
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+> This project is a Budget Management application that allow users to manage and monitor their expenditures. Built with Ruby and Ruby on Rails
 
-Things you may want to cover:
+## Built With
 
-* Ruby version
+- Ruby
+- Ruby on Rails
+- CSS
 
-* System dependencies
+## Getting Started
 
-* Configuration
+```
+git clone https://github.com/wuyepabdul/budget-management
 
-* Database creation
+cd budget-management
+rails db:create
+rails db:migrate
+rails db:seed
 
-* Database initialization
+rails server
+```
 
-* How to run the test suite
+## Tests
 
-* Services (job queues, cache servers, search engines, etc.)
+```
+git clone https://github.com/wuyepabdul/budget-management
+cd budget-management
+bundle install
+gem install rspec
+rspec
+```
 
-* Deployment instructions
+## Authors
 
-* ...
+👤 **Abdul Wuyep**
+
+- GitHub: [@wuyepabdul](https://github.com/wuyepabdul)
+- Twitter: [@AbdulWuyep](https://twitter.com/AbdulWuyep)
+- LinkedIn: [Abdul Wuyep](https://www.linkedin.com/in/abdul-wuyep/)
+
+
+## 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome!
+
+Feel free to check the [issues page](../../issues/).
+
+## Show your support
+
+Give a ⭐️ if you like this project!
+
+## Acknowledgments
+
+- Hat tip to anyone whose code was used
+- Inspiration
+- etc
+
+## 📝 License
+
+This project is [MIT](./MIT.md) licensed.
