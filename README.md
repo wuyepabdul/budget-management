@@ -25,6 +25,8 @@ rails server
 
 [Live Demo Link](https://rails-budget-management.herokuapp.com//)
 
+[Watch Demo](https://loom.com/share/5541c93141f046efb8850723b58d2343)
+
 ```
 
 
